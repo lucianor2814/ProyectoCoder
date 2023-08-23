@@ -1,0 +1,31 @@
+{% extends "AppProyectoCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %} RESULTADOS DE BUSQUEDA POR CANTIDAD DE TEMPORADAS {% endblock %}
+
+{% block contenido_que_cambia %}
+
+<form action="{% url 'buscar' %}" method="GET">
+
+    <input type="number" name="temporadas" id="temporadas" placeholder="CANT. TEMPORADAS">
+
+    <input type="submit" value="BUSCAR">
+       
+</form>
+
+{% if series %}
+
+    <h1>RESULTADOS DE BUSQUEDA</h1>
+    {% for serie in series %}
+
+        <h3>{{ serie.titulo }} - {{ serie.temporadas }}</h3>
+        {% endfor %}
+
+{% else %}        
+
+    <h2>{{ mensaje }}</h2>
+
+{% endif %}
+
+{% endblock %}
